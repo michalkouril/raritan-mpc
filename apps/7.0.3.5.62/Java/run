@@ -1,0 +1,33 @@
+#!/bin/bash -x
+
+# cd "/Applications/Raritan/Raritan Multi-Platform Client/4.6.1.5.1/Raritan Multi-Platform Client.app/Contents/Resources/Java"
+# cd "/Applications/Raritan/Raritan Multi-Platform Client/5.0.6.5.29/Raritan Multi-Platform Client.app/Contents/Resources/Java"
+cd "/Applications/Raritan/Raritan Multi-Platform Client/7.0.3.5.62/Raritan Multi-Platform Client.app/Contents/Resources/Java"
+
+# DEBUG: # -Djava.security.debug=jar -Djavax.net.debug=ssl:trustmanager:handshake 
+
+# java -Xmn128M -Xmx512M -XX:MaxHeapFreeRatio=70 -XX:MinHeapFreeRatio=50 -classpath sMpc.jar:AmpPb.jar:jaws.jar:sClientLib.jar:sFoxtrot.jar	 com.raritan.rrc.ui.RRCApplication
+
+# adopt 1.8
+# export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
+# $JAVA_HOME/bin/java -Djdk.tls.client.cipherSuites=SSL_RSA_WITH_RC4_128_MD5 -Dcom.sun.net.ssl.checkRevocation=false -Xmn128M -Xmx512M -XX:MaxHeapFreeRatio=70 -XX:MinHeapFreeRatio=50 -classpath sMpc.jar:AmpPb.jar:jaws.jar:sClientLib.jar:sFoxtrot.jar	 com.raritan.rrc.ui.RRCApplication $1
+
+# export JAVA_HOME=`/usr/libexec/java_home -v 11.0.13` && unsupportedjar=base64.jar
+# export JAVA_HOME=`/usr/libexec/java_home -v 17.0.3` && unsupportedjar=base64_com_sun_ssl.jar
+export JAVA_HOME=`/usr/libexec/java_home -v 21.0.1` && unsupportedjar=base64_com_sun_ssl.jar
+/usr/bin/java -version
+/usr/bin/java -Djava.security.properties=./java.security --patch-module jdk.unsupported=$unsupportedjar -Djdk.tls.client.cipherSuites=SSL_RSA_WITH_RC4_128_MD5  -Dcom.sun.net.ssl.checkRevocation=false  -Xmn128M -Xmx512M -XX:MaxHeapFreeRatio=70 -XX:MinHeapFreeRatio=50 -classpath sMpc.jar:AmpPb.jar:jaws.jar:sClientLib.jar:sFoxtrot.jar:jsse.jar --add-opens=java.desktop/java.awt=ALL-UNNAMED --add-exports jdk.unsupported/com.sun.net.ssl.internal.ssl=ALL-UNNAMED --add-exports java.base/sun.security.jca=ALL-UNNAMED --add-exports java.base/sun.security.ssl=ALL-UNNAMED --add-exports java.security.jgss/sun.security.jgss=ALL-UNNAMED com.raritan.rrc.ui.RRCApplication
+
+# export JAVA_HOME=`/usr/libexec/java_home -v 11.0.13`
+# export JAVA_HOME=`/usr/libexec/java_home -v 17.0.3`
+# export JAVA_HOME=`/usr/libexec/java_home -v 21.0.1`
+# usr/bin/java -version
+
+# /usr/bin/java -Djava.security.properties=./java.security --patch-module jdk.unsupported=base64.jar -Djdk.tls.client.cipherSuites=SSL_RSA_WITH_RC4_128_MD5  -Dcom.sun.net.ssl.checkRevocation=false  -Xmn128M -Xmx512M -XX:MaxHeapFreeRatio=70 -XX:MinHeapFreeRatio=50 -classpath sMpc.jar:AmpPb.jar:jaws.jar:sClientLib.jar:sFoxtrot.jar:jsse.jar --add-opens=java.desktop/java.awt=ALL-UNNAMED --add-exports jdk.unsupported/com.sun.net.ssl.internal.ssl=ALL-UNNAMED --add-exports java.base/sun.security.jca=ALL-UNNAMED --add-exports java.base/sun.security.ssl=ALL-UNNAMED --add-exports java.security.jgss/sun.security.jgss=ALL-UNNAMED com.raritan.rrc.ui.RRCApplication
+
+
+
+# adopt 1.8
+# export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
+# $JAVA_HOME/bin/java -Djdk.tls.client.cipherSuites=SSL_RSA_WITH_RC4_128_MD5 -Dcom.sun.net.ssl.checkRevocation=false -Xmn128M -Xmx512M -XX:MaxHeapFreeRatio=70 -XX:MinHeapFreeRatio=50 -classpath sMpc.jar:AmpPb.jar:jaws.jar:sClientLib.jar:sFoxtrot.jar	 com.raritan.rrc.ui.RRCApplication $1
+
